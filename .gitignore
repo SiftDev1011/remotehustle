@@ -1,0 +1,17 @@
+node_modules/
+.next/
+.env*
+!.env.example
+*.tsbuildinfo
+coverage/
+test-results/
+.vercel/
+.DS_Store
+
+# Markdown documentation, at any directory depth and with any extension casing.
+*.[mM][dD]
+
+# Backups and restored personal data never belong in source control.
+.backups/
+restore-output/
+*.enc

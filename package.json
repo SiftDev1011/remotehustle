@@ -1,0 +1,43 @@
+{
+  "name": "remote-hustle",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "node --conditions=react-server --import tsx --test tests/*.test.ts",
+    "bootstrap-owner": "node --env-file=.env.local --import tsx scripts/bootstrap-owner.ts",
+    "check-config": "node --env-file=.env.local --import tsx scripts/check-config.ts",
+    "format": "prettier --write src scripts tests *.ts *.json *.md",
+    "format:check": "prettier --check src scripts tests *.ts *.json *.md",
+    "backup": "node --env-file-if-exists=.env.local scripts/backup.mjs",
+    "verify-backup": "node --env-file-if-exists=.env.local scripts/verify-backup.mjs",
+    "smoke-check": "node --env-file-if-exists=.env.local scripts/smoke-check.mjs"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.1147.0",
+    "@aws-sdk/s3-request-presigner": "3.1147.0",
+    "@supabase/ssr": "0.12.7",
+    "@supabase/supabase-js": "2.117.2",
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "server-only": "0.0.1",
+    "sharp": "0.35.5",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.8",
+    "@types/node": "26.6.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "prettier": "3.9.9",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
+  }
+}
