@@ -2313,3 +2313,149 @@
 #rh-search-discovery .app-stats-grid > .app-card {
   margin: 0;
 }
+
+/* Homepage content must size to its column, including long CMS values. */
+#rh-search-discovery .rh-learning > *,
+#rh-search-discovery .rh-about-copy,
+#rh-search-discovery .rh-section-head > *,
+#rh-search-discovery .app-product-card,
+#rh-search-discovery .app-product-copy,
+#rh-search-discovery .app-impact-grid > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+#rh-search-discovery .rh-course > span:last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+#rh-search-discovery .rh-course-symbol {
+  flex-shrink: 0;
+}
+#rh-search-discovery .rh-affiliate-viewport {
+  min-width: 0;
+  max-width: 100%;
+  padding-block: 6px;
+}
+#rh-search-discovery .rh-affiliate-logo > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+#rh-search-discovery .rh-affiliate-logo img {
+  flex-shrink: 0;
+}
+#rh-search-discovery .rh-category {
+  max-width: 100%;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+#rh-search-discovery .rh-discover .rh-job {
+  grid-template-columns: 44px minmax(0, 1fr) minmax(0, 220px);
+}
+#rh-search-discovery .rh-job-logo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 5px;
+  background: var(--rm-pale);
+  font-size: 14px;
+  font-weight: 600;
+}
+#rh-search-discovery .rh-discover .rh-job-info,
+#rh-search-discovery .rh-discover .rh-job-pay {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+#rh-search-discovery .rh-job-company {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--rm-muted);
+}
+#rh-search-discovery .rh-section-head {
+  flex-wrap: wrap;
+}
+@media (min-width: 681px) and (max-width: 1000px) {
+  #rh-search-discovery .rh-service {
+    min-width: 34px;
+  }
+  #rh-search-discovery .rh-service-body {
+    left: 24px;
+    right: 24px;
+  }
+  #rh-search-discovery .rh-service-body h2 {
+    font-size: clamp(32px, 4.4vw, 44px);
+  }
+}
+#rh-search-discovery .rh-service-body {
+  overflow-wrap: anywhere;
+}
+#rh-search-discovery .rh-service-link {
+  max-width: 100%;
+}
+@media (max-width: 680px) {
+  #rh-search-discovery .rh-learning {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #rh-search-discovery .rh-learning-photo {
+    width: 100%;
+    min-height: 0;
+  }
+  #rh-search-discovery .rh-discover .rh-job {
+    grid-template-columns: 40px minmax(0, 1fr);
+  }
+  #rh-search-discovery .rh-job-logo {
+    width: 40px;
+    height: 40px;
+    align-self: start;
+  }
+  #rh-search-discovery .rh-discover .rh-job-info {
+    grid-column: 2;
+  }
+  #rh-search-discovery .rh-image-accordion {
+    height: auto;
+    align-items: stretch;
+  }
+  #rh-search-discovery .rh-service,
+  #rh-search-discovery .rh-service.is-active {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 560px;
+  }
+  #rh-search-discovery .rh-service .rh-service-body,
+  #rh-search-discovery .rh-service:not(.is-active) .rh-service-body {
+    position: relative;
+    inset: auto;
+    margin: 105px 24px 28px;
+    transform: none;
+  }
+  #rh-search-discovery .rh-service .rh-mobile-card-controls {
+    position: relative;
+    inset: auto;
+    margin: auto 24px 25px;
+  }
+  #rh-search-discovery .rh-service-link {
+    gap: 16px;
+    padding-inline: 15px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #rh-search-discovery .rh-affiliate-track {
+    width: 100%;
+    animation: none;
+  }
+  #rh-search-discovery .app-partner-set {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding-right: 0;
+  }
+  #rh-search-discovery .app-partner-set[aria-hidden="true"] {
+    display: none;
+  }
+  #rh-search-discovery .rh-affiliate-logo {
+    max-width: 100%;
+  }
+}

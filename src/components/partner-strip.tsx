@@ -27,7 +27,7 @@ export function PartnerStrip({ partners }: { partners: Partner[] }) {
     >
       <p className="rh-affiliate-label">Partnering Organisations</p>
       {partners.length ? (
-        <div className="rh-affiliate-window">
+        <div className="rh-affiliate-viewport">
           <div className="rh-affiliate-track">
             <div className="app-partner-set">
               {partners.map((p) =>

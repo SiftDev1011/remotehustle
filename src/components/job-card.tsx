@@ -10,7 +10,7 @@ export function JobCard({ job, location }: { job: Job; location?: string }) {
         <h3>
           <Link href={"/jobs/" + job.id}>{job.title}</Link>
         </h3>
-        <p className="rh-company">{job.company}</p>
+        <p className="rh-job-company">{job.company}</p>
         <p className="rh-job-meta">
           Remote{location ? " · " + location : ""}
           <span>{job.employment_type}</span>

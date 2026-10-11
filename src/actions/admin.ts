@@ -175,7 +175,38 @@ export async function listAction(
   if (error) return { error: publicError(error) };
   revalidatePath("/admin/lists");
   revalidatePath("/workspace/profile");
+  revalidatePath("/");
+  revalidatePath("/jobs");
   return { success: "List updated." };
+}
+export async function hideListAction(
+  _previous: ActionState,
+  form: FormData,
+): Promise<ActionState> {
+  const context = await requireArea("jobs");
+  const result = z
+    .object({
+      table: z.enum(["job_categories", "skills", "locations"]),
+      id: idSchema,
+    })
+    .safeParse({ table: form.get("table"), id: form.get("id") });
+  if (!result.success) return { error: "Invalid list record." };
+  const { data, error } = await context.db
+    .from(result.data.table)
+    .update({ active: false })
+    .eq("id", result.data.id)
+    .select("id")
+    .maybeSingle();
+  if (error) return { error: publicError(error) };
+  if (!data)
+    return { error: "This list record no longer exists. Refresh the page." };
+  revalidatePath("/admin/lists");
+  revalidatePath("/workspace/profile");
+  revalidatePath("/");
+  revalidatePath("/jobs");
+  return {
+    success: "Hidden from new selections. Existing records are unchanged.",
+  };
 }
 export async function removeListAction(
   _previous: ActionState,
@@ -193,7 +224,23 @@ export async function removeListAction(
     .from(result.data.table)
     .delete()
     .eq("id", result.data.id);
+  if (error?.code === "23503") {
+    const reference =
+      result.data.table === "skills"
+        ? "This skill is assigned to a worker profile."
+        : result.data.table === "locations"
+          ? "This location is assigned to a job or worker profile."
+          : "This category is assigned to a job or worker profile.";
+    return {
+      error:
+        reference +
+        " Hide it from new selections instead, or change those assignments before deleting it. Existing records have not been changed.",
+    };
+  }
   if (error) return { error: publicError(error) };
   revalidatePath("/admin/lists");
+  revalidatePath("/workspace/profile");
+  revalidatePath("/");
+  revalidatePath("/jobs");
   return { success: "Record removed." };
 }

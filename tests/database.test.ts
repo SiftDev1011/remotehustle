@@ -857,3 +857,91 @@ test("operations and failed-email retries are super-admin only and cannot replay
   ).rows[0].data;
   assert.ok(data.emails.length > 0);
 });
+
+test("used categories can be hidden without detaching records; only unused categories can be deleted", async () => {
+  const category = "10000000-0000-4000-8000-000000000099";
+  await as(
+    ids.jobs,
+    "insert into public.job_categories(id,name) values($1,'Retiring category')",
+    [category],
+  );
+  // An existing worker profile must retain its assigned category.
+  await db.query("update public.profiles set category_id=$1 where user_id=$2", [
+    category,
+    ids.bob,
+  ]);
+  await assert.rejects(
+    as(ids.jobs, "delete from public.job_categories where id=$1", [category]),
+    /foreign key constraint/,
+  );
+  const denied = await as(
+    ids.orders,
+    "update public.job_categories set active=false where id=$1 returning id",
+    [category],
+  );
+  assert.equal(denied.rows.length, 0);
+  await as(
+    ids.jobs,
+    "update public.job_categories set active=false where id=$1",
+    [category],
+  );
+  assert.equal(
+    (
+      await as(
+        null,
+        "select id from public.job_categories where id=$1",
+        [category],
+        "anon",
+      )
+    ).rows.length,
+    0,
+  );
+  assert.equal(
+    (
+      await as(ids.jobs, "select id from public.job_categories where id=$1", [
+        category,
+      ])
+    ).rows.length,
+    1,
+  );
+  assert.equal(
+    (
+      await db.query<{ category_id: string }>(
+        "select category_id from public.profiles where user_id=$1",
+        [ids.bob],
+      )
+    ).rows[0].category_id,
+    category,
+  );
+  await as(
+    ids.jobs,
+    "update public.job_categories set active=true where id=$1",
+    [category],
+  );
+  assert.equal(
+    (
+      await as(
+        null,
+        "select id from public.job_categories where id=$1",
+        [category],
+        "anon",
+      )
+    ).rows.length,
+    1,
+  );
+  await db.query(
+    "update public.profiles set category_id=null where user_id=$1",
+    [ids.bob],
+  );
+  await as(ids.jobs, "delete from public.job_categories where id=$1", [
+    category,
+  ]);
+  assert.equal(
+    (
+      await db.query("select id from public.job_categories where id=$1", [
+        category,
+      ])
+    ).rows.length,
+    0,
+  );
+});
