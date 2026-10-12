@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { AutoScrollStrip } from "./auto-scroll-strip";
 interface Partner {
   id: string;
   name: string;
@@ -7,7 +7,6 @@ interface Partner {
   website_url: string | null;
 }
 export function PartnerStrip({ partners }: { partners: Partner[] }) {
-  const [touch, setTouch] = useState(false);
   const logo = (p: Partner) => (
     <>
       {p.logo_url && (
@@ -20,43 +19,36 @@ export function PartnerStrip({ partners }: { partners: Partner[] }) {
     <section
       className="rh-affiliates rh-shell"
       aria-label="Partnering Organisations"
-      data-paused={touch}
-      onTouchStart={() => setTouch(true)}
-      onTouchEnd={(e) => setTouch(e.touches.length > 0)}
-      onTouchCancel={() => setTouch(false)}
     >
       <p className="rh-affiliate-label">Partnering Organisations</p>
       {partners.length ? (
-        <div className="rh-affiliate-viewport">
-          <div className="rh-affiliate-track">
-            <div className="app-partner-set">
-              {partners.map((p) =>
-                p.website_url ? (
-                  <a
-                    key={p.id}
-                    className="rh-affiliate-logo"
-                    href={p.website_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {logo(p)}
-                  </a>
-                ) : (
-                  <span key={p.id} className="rh-affiliate-logo">
-                    {logo(p)}
-                  </span>
-                ),
-              )}
-            </div>
-            <div className="app-partner-set" aria-hidden="true">
-              {partners.map((p) => (
+        <AutoScrollStrip
+          count={partners.length}
+          label="Browse partnering organisations"
+          className="rh-affiliate-viewport"
+          trackClass="rh-affiliate-track"
+          groupClass="app-partner-set"
+          renderItems={(duplicate) =>
+            partners.map((p) =>
+              p.website_url ? (
+                <a
+                  key={p.id}
+                  className="rh-affiliate-logo"
+                  href={p.website_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tabIndex={duplicate ? -1 : undefined}
+                >
+                  {logo(p)}
+                </a>
+              ) : (
                 <span key={p.id} className="rh-affiliate-logo">
                   {logo(p)}
                 </span>
-              ))}
-            </div>
-          </div>
-        </div>
+              ),
+            )
+          }
+        />
       ) : (
         <p className="rm-note">
           Partnering organisations will appear here when announced.

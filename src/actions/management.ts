@@ -222,7 +222,21 @@ export async function saveContentAction(
   const s = (key: string) => String(form.get(key) || "").trim();
   try {
     let value: Record<string, unknown>;
-    if (key === "about")
+    if (key === "home-images")
+      value = z
+        .object({
+          learning_image_url: url,
+          learning_image_alt: text(0, 240),
+          about_image_url: url,
+          about_image_alt: text(0, 240),
+        })
+        .parse({
+          learning_image_url: s("learning_image_url") || null,
+          learning_image_alt: s("learning_image_alt"),
+          about_image_url: s("about_image_url") || null,
+          about_image_alt: s("about_image_alt"),
+        });
+    else if (key === "about")
       value = z
         .object({ title: text(3, 180), body: text(20, 12000), image_url: url })
         .parse({

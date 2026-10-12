@@ -11,6 +11,7 @@ export default async function Content() {
   const { data, error } = await context.db.from("site_content").select("*");
   if (error) throw new Error("Unable to load website content.");
   const sections = [
+    { key: "home-images", title: "Homepage images" },
     { key: "about", title: "About Remote Hustle" },
     { key: "contact", title: "Contact details" },
     { key: "commerce", title: "Purchase support and downloads" },
@@ -55,6 +56,43 @@ export default async function Content() {
             >
               <ActionForm action={saveContentAction}>
                 <input type="hidden" name="key" value={section.key} />
+                {section.key === "home-images" && (
+                  <>
+                    <p className="rm-note">
+                      Replace either homepage picture, then publish and save.
+                      Clearing a selection restores the existing default image.
+                      About text is managed separately below.
+                    </p>
+                    <AssetUpload
+                      area="content"
+                      name="learning_image_url"
+                      label="Make room for what’s next. — image"
+                      initial={v.learning_image_url || ""}
+                    />
+                    <Input
+                      name="learning_image_alt"
+                      label="Learning image description"
+                      maxLength={240}
+                      defaultValue={v.learning_image_alt || ""}
+                    />
+                    <AssetUpload
+                      area="content"
+                      name="about_image_url"
+                      label="Opportunity begins with preparation. — image"
+                      initial={v.about_image_url || ""}
+                    />
+                    <Input
+                      name="about_image_alt"
+                      label="About image description"
+                      maxLength={240}
+                      defaultValue={v.about_image_alt || ""}
+                    />
+                    <p className="rm-note">
+                      Image descriptions help people using screen readers.
+                      Briefly describe what the replacement picture shows.
+                    </p>
+                  </>
+                )}
                 {section.key === "about" && (
                   <>
                     <Input

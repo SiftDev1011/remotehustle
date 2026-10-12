@@ -32,6 +32,7 @@ export default async function Home() {
     shopRecords(),
   ]);
   const about = website.content.about;
+  const images = website.content["home-images"];
   return (
     <main id="rh-main">
       <ServiceAccordion content={website.content} />
@@ -154,10 +155,14 @@ export default async function Home() {
         </div>
         <div className="rh-learning-photo">
           <img
-            src="/photos/learning-books.jpg"
+            src={images?.learning_image_url || "/photos/learning-books.jpg"}
             width={1086}
             height={1448}
-            alt="A quiet workspace with a notebook and practical study materials"
+            alt={
+              images?.learning_image_url
+                ? images.learning_image_alt || "Learning and career preparation"
+                : "A quiet workspace with a notebook and practical study materials"
+            }
             loading="lazy"
           />
         </div>
@@ -176,10 +181,18 @@ export default async function Home() {
         </div>
         <figure className="rh-about-photo">
           <img
-            src={about?.image_url || "/photos/about-workspace.jpg"}
+            src={
+              images?.about_image_url ||
+              about?.image_url ||
+              "/photos/about-workspace.jpg"
+            }
             width={1448}
             height={1086}
-            alt="A laptop, notebook and document folder on an unoccupied desk"
+            alt={
+              images?.about_image_url
+                ? images.about_image_alt || "About Remote Hustle"
+                : "A laptop, notebook and document folder on an unoccupied desk"
+            }
             loading="lazy"
           />
         </figure>

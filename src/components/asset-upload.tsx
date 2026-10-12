@@ -6,12 +6,14 @@ export function AssetUpload({
   name,
   initial = "",
   preview = "",
+  label,
 }: {
   area: "partners" | "content" | "shop";
   kind?: "image" | "digital";
   name: string;
   initial?: string;
   preview?: string;
+  label?: string;
 }) {
   const [value, setValue] = useState(initial),
     [url, setUrl] = useState(preview || initial),
@@ -77,7 +79,7 @@ export function AssetUpload({
   return (
     <div className="app-field app-asset-upload">
       <label>
-        {kind === "image" ? "Image / logo" : "Digital product file"}
+        {label || (kind === "image" ? "Image / logo" : "Digital product file")}
         <input
           type="file"
           disabled={busy}
