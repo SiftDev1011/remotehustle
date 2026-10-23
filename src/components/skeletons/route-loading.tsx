@@ -1,5 +1,7 @@
 "use client";
 
+import FaqLoading from "@/app/faq/loading";
+import { SearchSkeleton } from "./search";
 import { usePathname, useSearchParams } from "next/navigation";
 import {
   AboutSkeleton,
@@ -79,6 +81,8 @@ export default function RouteLoading() {
       </WorkspaceShellSkeleton>
     );
   if (path === "/") return <HomeSkeleton />;
+  if (path === "/faq") return <FaqLoading />;
+  if (path === "/search") return <SearchSkeleton />;
   if (path === "/jobs") return <JobsSkeleton />;
   if (path.startsWith("/jobs/")) return <JobDetailSkeleton />;
   if (path === "/shop") return <ShopSkeleton />;

@@ -1,3 +1,4 @@
+import { HelpWidget } from "@/components/help-widget";
 import { indexingEnabled } from "@/lib/seo";
 import type { Metadata } from "next";
 import { Suspense } from "react";
@@ -10,6 +11,7 @@ import { Navigation } from "@/components/navigation";
 import "./globals.css";
 import "./app-shell.css";
 import "./skeletons.css";
+import "./brand-theme.css";
 
 export const metadata: Metadata = {
   applicationName: "REMOTE HUSTLE",
@@ -59,6 +61,7 @@ export default function RootLayout({
             <AccountNavigation />
           </Suspense>
           {children}
+          <HelpWidget />
           <Suspense fallback={<FooterFallback />}>
             <SiteFooter />
           </Suspense>

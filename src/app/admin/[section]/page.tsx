@@ -74,6 +74,15 @@ export default async function ManagementPage({
             .order("name")
         ).data || []
       : [];
+  const careerResult =
+    section === "programs" || section === "products"
+      ? await context.db
+          .from("job_categories")
+          .select("id,name,active")
+          .order("name")
+      : null;
+  if (careerResult?.error) throw new Error("Unable to load career categories.");
+  const careerCategories = careerResult?.data || [];
   const r = record || {};
   let assetId = "";
   if (section === "products" && record) {
@@ -168,6 +177,57 @@ export default async function ManagementPage({
                   r.sort_order ?? 0,
                 )}
                 {check("active", "Show in Partnering Organisations strip")}
+              </>
+            )}
+            {(section === "programs" || section === "products") && (
+              <div>
+                <Select
+                  name="career_category_id"
+                  label="Related career category"
+                  defaultValue={r.career_category_id || ""}
+                >
+                  <option value="">Not assigned</option>
+                  {careerCategories
+                    .filter((c) => c.active || c.id === r.career_category_id)
+                    .map((c) => (
+                      <option key={c.id} value={c.id}>
+                        {c.name}
+                        {c.active ? "" : " (inactive)"}
+                      </option>
+                    ))}
+                </Select>
+                <p className="rm-note">
+                  Links this item to jobs, training and resources in the same
+                  field. Choose a category so it appears in category searches.
+                </p>
+              </div>
+            )}
+            {section === "faqs" && (
+              <>
+                {input("question", "Question", true)}
+                <TextArea
+                  name="answer"
+                  label="Answer"
+                  required
+                  minLength={10}
+                  maxLength={3000}
+                  defaultValue={r.answer || ""}
+                />
+                {input(
+                  "sort_order",
+                  "Display order",
+                  false,
+                  "number",
+                  r.sort_order ?? 0,
+                )}
+                {check(
+                  "published",
+                  "Publish answer on the website and make it available to the helper",
+                )}
+                <p className="rm-note">
+                  Use approved public information only. Do not include customer
+                  details, passwords or private instructions.
+                </p>
               </>
             )}
             {section === "programs" && (

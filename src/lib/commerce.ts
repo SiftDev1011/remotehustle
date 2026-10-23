@@ -1,6 +1,7 @@
 export type Product = {
   id: string;
   category_id?: string | null;
+  career_category_id?: string | null;
   name: string;
   description: string;
   type: "digital" | "physical";

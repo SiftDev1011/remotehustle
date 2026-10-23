@@ -61,6 +61,7 @@ export async function saveManagedAction(
           starts_on: z.iso.date().nullable(),
           duration: text(0, 120),
           published: z.boolean(),
+          career_category_id: z.uuid().nullable(),
         })
         .parse({
           title: s("title"),
@@ -71,6 +72,7 @@ export async function saveManagedAction(
           starts_on: u("starts_on"),
           duration: s("duration"),
           published: b("published"),
+          career_category_id: u("career_category_id"),
         });
     else if (section === "products") {
       data = z
@@ -82,6 +84,7 @@ export async function saveManagedAction(
           image_url: url,
           active: z.boolean(),
           category_id: z.uuid().nullable(),
+          career_category_id: z.uuid().nullable(),
         })
         .parse({
           name: s("name"),
@@ -91,6 +94,7 @@ export async function saveManagedAction(
           image_url: u("image_url"),
           active: b("active"),
           category_id: u("category_id"),
+          career_category_id: u("career_category_id"),
         });
       const asset = u("asset_id");
       if (asset && !z.uuid().safeParse(asset).success)
@@ -102,11 +106,12 @@ export async function saveManagedAction(
       });
       if (result.error)
         return {
-          error: /^(Upload a digital|Choose an active product)/.test(
-            result.error.message,
-          )
-            ? result.error.message
-            : publicError(result.error),
+          error:
+            /^(Upload a digital|Choose an active product|Choose an active career)/.test(
+              result.error.message,
+            )
+              ? result.error.message
+              : publicError(result.error),
         };
       revalidatePath("/shop");
       revalidatePath("/");
@@ -144,6 +149,20 @@ export async function saveManagedAction(
             ? new Date(s("expires_at") + "Z").toISOString()
             : null,
           active: b("active"),
+        });
+    else if (section === "faqs")
+      data = z
+        .object({
+          question: text(5, 220),
+          answer: text(10, 3000),
+          sort_order: z.number().int().min(0).max(10000),
+          published: z.boolean(),
+        })
+        .parse({
+          question: s("question"),
+          answer: s("answer"),
+          sort_order: Number(s("sort_order") || 0),
+          published: b("published"),
         });
     else if (section === "testimonials")
       data = z
@@ -186,7 +205,12 @@ export async function saveManagedAction(
           .select("id")
           .single()
       : await context.db.from(config.table).insert(data).select("id").single();
-    if (result.error) return { error: publicError(result.error) };
+    if (result.error)
+      return {
+        error: result.error.message.startsWith("Choose an active career")
+          ? result.error.message
+          : publicError(result.error),
+      };
   } catch (e) {
     if (e instanceof z.ZodError) return { error: e.issues[0].message };
     if (e instanceof Error && e.message.startsWith("NEXT_REDIRECT")) throw e;

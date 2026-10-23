@@ -299,7 +299,44 @@ export function HomeSkeleton() {
         </div>
         <ProductBones count={3} />
       </section>
+      <div className="rh-shell app-home-faq">
+        <div className="app-search-group-head">
+          <Bone width="min(75%, 350px)" height={32} />
+        </div>
+        <div className="app-faq-list">
+          {[1, 2, 3, 4].map((i) => (
+            <Bone key={i} height={54} />
+          ))}
+        </div>
+      </div>
     </LoadingPage>
+  );
+}
+
+export function HomeFaqSkeleton() {
+  return (
+    <section
+      className="rh-shell app-home-faq"
+      aria-label="Loading FAQs"
+      aria-busy="true"
+    >
+      <span className="rh-a11y" role="status">
+        Loading FAQs.
+      </span>
+      <div aria-hidden="true">
+        <div className="app-search-group-head">
+          <Bone width="min(75%, 350px)" height={32} />
+          <Bone width={70} />
+        </div>
+        <div className="app-faq-list">
+          {[1, 2, 3, 4].map((i) => (
+            <div className="app-faq-item" key={i}>
+              <Bone height={54} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 

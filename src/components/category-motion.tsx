@@ -162,11 +162,11 @@ export function CategoryMotion({
   const choices = categories.length
     ? categories.slice(0, 12).map((category) => ({
         name: category.name,
-        href: "/jobs?category=" + category.id,
+        href: "/search?category=" + category.id,
       }))
     : fields.map((name) => ({
         name,
-        href: "/jobs?q=" + encodeURIComponent(name),
+        href: "/search?q=" + encodeURIComponent(name),
       }));
   return (
     <section

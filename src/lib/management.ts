@@ -1,4 +1,5 @@
 export type ManagedSection =
+  | "faqs"
   | "partners"
   | "programs"
   | "products"
@@ -7,6 +8,7 @@ export type ManagedSection =
   | "impact"
   | "product-categories";
 export const management = {
+  faqs: { title: "FAQs", area: "content", table: "faqs", label: "question" },
   "product-categories": {
     title: "Product categories",
     area: "shop",

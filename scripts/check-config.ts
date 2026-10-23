@@ -22,7 +22,20 @@ const groups: Record<string, string[]> = {
   ],
   "Legal details": ["LEGAL_OPERATOR_NAME", "PRIVACY_CONTACT_EMAIL"],
 };
+if (process.env.AI_HELPER_ENABLED === "true")
+  groups["AI website helper"] = [
+    "OPENAI_API_KEY",
+    "OPENAI_HELPER_MODEL",
+    "HELPER_RATE_SECRET",
+  ];
 let missing = false;
+if (
+  process.env.AI_HELPER_ENABLED === "true" &&
+  (process.env.HELPER_RATE_SECRET?.length || 0) < 32
+) {
+  console.log("HELPER_RATE_SECRET needs at least 32 characters.");
+  missing = true;
+}
 for (const [label, keys] of Object.entries(groups)) {
   const absent = keys.filter((key) => !process.env[key]?.trim());
   console.log(

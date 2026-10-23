@@ -60,6 +60,7 @@ function Footer({
         <Link href="/jobs">Find work</Link>
         <Link href="/programs">Build skills</Link>
         <Link href="/about">About & contact</Link>
+        <Link href="/faq">FAQs & help</Link>
         <Link href="/privacy">Privacy</Link>
         <Link href="/terms">Terms</Link>
         <Link href="/admin">Team access</Link>

@@ -1,3 +1,6 @@
+import { searchFilters } from "@/lib/search";
+import { searchCatalog } from "@/lib/catalog-search";
+import { SearchResults } from "@/components/search-results";
 import { publicMetadata } from "@/lib/seo";
 export function generateMetadata() {
   return publicMetadata(
@@ -29,9 +32,13 @@ export default async function Jobs({
   const employment =
     EMPLOYMENT_TYPES.find((t) => t === value("employment")) || "";
   const q = value("q").slice(0, 150);
-  const [jobs, taxonomy] = await Promise.all([
+  const catalogFilters = searchFilters(params);
+  const [jobs, taxonomy, related] = await Promise.all([
     publishedJobs({ q, category, location, employment }),
     lists(),
+    q.trim() || category
+      ? searchCatalog(catalogFilters, ["training", "internship", "resources"])
+      : Promise.resolve([]),
   ]);
   return (
     <main id="rh-main" className="rm-page rm-shell app-jobs-page">
@@ -106,6 +113,14 @@ export default async function Jobs({
         >
           Try a broader search or return when the team publishes new jobs.
         </EmptyState>
+      )}
+      {!!related.length && (
+        <>
+          <p className="rm-note app-section">
+            Related learning and resources from all locations.
+          </p>
+          <SearchResults groups={related} filters={catalogFilters} />
+        </>
       )}
     </main>
   );

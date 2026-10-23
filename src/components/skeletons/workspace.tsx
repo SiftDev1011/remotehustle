@@ -138,6 +138,7 @@ export function ManagedFormSkeleton({ section }: { section: string }) {
         <Bone width={180} height={26} />
         <div className="app-form">
           <div className="app-form-fields">
+            {["products", "programs"].includes(section) && <FieldBone />}
             <FieldBone tall={section === "testimonials"} />
             {["products", "programs", "impact"].includes(section) && (
               <FieldBone tall />

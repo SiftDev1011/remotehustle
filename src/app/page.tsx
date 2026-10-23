@@ -12,6 +12,9 @@ import Link from "next/link";
 import { ServiceAccordion } from "@/components/service-accordion";
 import { PartnerStrip } from "@/components/partner-strip";
 import { CategoryMotion } from "@/components/category-motion";
+import { Suspense } from "react";
+import { HomeFaqSkeleton } from "@/components/skeletons/public";
+import { HomeFaqs } from "@/components/home-faqs";
 import { JobCard } from "@/components/job-card";
 import { EmptyState } from "@/components/ui";
 import { ProductCard } from "@/components/product-card";
@@ -40,7 +43,7 @@ export default async function Home() {
         className="rh-search-section rh-shell"
         aria-label="Search remote opportunities"
       >
-        <form action="/jobs" className="rh-hero-search">
+        <form action="/search" className="rh-hero-search">
           <label className="rh-search-field">
             <svg
               aria-hidden="true"
@@ -90,7 +93,7 @@ export default async function Home() {
             </span>
           </label>
           <button type="submit" className="rh-button rh-button-yellow">
-            Find opportunities
+            Search
           </button>
         </form>
       </section>
@@ -245,6 +248,9 @@ export default async function Home() {
       )}
       <PartnerStrip partners={records.partners} />
       <CategoryMotion categories={taxonomy.categories} />
+      <Suspense fallback={<HomeFaqSkeleton />}>
+        <HomeFaqs />
+      </Suspense>
     </main>
   );
 }

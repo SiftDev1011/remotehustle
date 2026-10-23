@@ -46,6 +46,7 @@ export default async function AdminLayout({
             {canManage(membership, "content") && (
               <>
                 <Link href="/admin/programs">Training & internships</Link>
+                <Link href="/admin/faqs">FAQs & helper answers</Link>
                 <Link href="/admin/content">Website content</Link>
                 <Link href="/admin/messages">Contact messages</Link>
                 <Link href="/admin/testimonials">Testimonials & impact</Link>

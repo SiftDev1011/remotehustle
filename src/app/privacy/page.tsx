@@ -55,6 +55,26 @@ export default function Privacy() {
           inbox. Expired rate-limit records are removed during subsequent
           submissions.
         </p>
+        <h2 id="ai-helper">Optional AI help</h2>
+        <p>
+          When the AI helper is enabled and you choose to use it, your question
+          and relevant published website information are sent to OpenAI to
+          generate an answer. You can use the FAQs without choosing AI. Do not
+          include passwords, payment details, CVs or other private information
+          in a question. The helper is not given access to your account, orders
+          or private files and cannot make changes for you.
+        </p>
+        <p>
+          The app does not save helper questions or answers to its database, and
+          the displayed conversation is kept only in the current browser page.
+          Requests ask OpenAI not to store responses for later API retrieval;
+          this does not eliminate the provider’s security or abuse-monitoring
+          retention. OpenAI may process information outside Nigeria under its
+          applicable data-handling terms. Keyed network-address hashes and
+          request counts are used to limit abuse and costs; expired counters are
+          removed on subsequent AI requests. AI answers can be wrong, so check
+          the linked published sources or contact the team.
+        </p>
         <h2>Programme registration</h2>
         <p>
           For REMOTE HUSTLE 1.0 we collect your certificate name, verified

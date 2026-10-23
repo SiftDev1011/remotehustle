@@ -1,0 +1,1 @@
+export { SearchSkeleton as default } from "@/components/skeletons/search";

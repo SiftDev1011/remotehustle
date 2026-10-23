@@ -1,0 +1,100 @@
+/* Shared solid brand colours. Semantic success/error colours remain independent. */
+:root,
+#rh-search-discovery,
+#rm-dialog {
+  --rh-bg: #ffffff;
+  --rh-paper: #ffffff;
+  --rh-ink: #01040d;
+  --rh-accent-deep: #215ffc;
+  --rh-yellow: #215ffc;
+  --rh-yellow-ink: #ffffff;
+  --rh-accent-soft: #e6eeff;
+  --rh-soft: #f2f6ff;
+  --rm-accent: #215ffc;
+  --rm-accent-hover: #174bd2;
+  --rm-on-accent: #ffffff;
+  --rm-blue: #215ffc;
+  --rm-deep: #01040d;
+  --rm-pale: #f2f6ff;
+  --rm-soft: #f2f6ff;
+  --rm-yellow: #f4d35e;
+  --rm-yellow-hover: #e8c34b;
+}
+#rh-search-discovery .app-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  color: var(--rm-deep);
+}
+#rh-search-discovery .app-brand img.app-brand-mark {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+}
+#rh-search-discovery .app-brand > span {
+  font-size: 15px;
+  font-weight: 750;
+  letter-spacing: 0.025em;
+  line-height: 1.12;
+}
+#rh-search-discovery .rh-button,
+#rh-search-discovery .rh-button-yellow,
+#rh-search-discovery .rm-btn,
+#rh-search-discovery .rm-btn-blue,
+#rm-dialog .rm-btn,
+#rh-search-discovery .rh-round-button:hover,
+#rh-search-discovery .rh-category:hover,
+#rh-search-discovery .rh-category[aria-pressed="true"] {
+  color: #fff;
+}
+#rh-search-discovery .rh-button:hover,
+#rh-search-discovery .rh-button-yellow:hover,
+#rh-search-discovery .rm-btn:hover,
+#rh-search-discovery .rm-btn-blue:hover,
+#rm-dialog .rm-btn:hover {
+  color: #fff;
+}
+#rh-search-discovery .rm-header-actions > .rm-btn,
+#rh-search-discovery .rh-hero-search .rh-button,
+#rh-search-discovery .rh-orbit-cta .rh-button {
+  background: var(--rm-accent);
+  border-color: var(--rm-accent);
+  color: #fff;
+}
+#rh-search-discovery .rm-header-actions > .rm-btn:hover,
+#rh-search-discovery .rh-hero-search .rh-button:hover,
+#rh-search-discovery .rh-orbit-cta .rh-button:hover {
+  background: var(--rm-accent-hover);
+  border-color: var(--rm-accent-hover);
+}
+#rh-search-discovery .rm-btn-light,
+#rh-search-discovery .rm-btn-light:hover,
+#rh-search-discovery .rm-card-blue .rm-btn-light,
+#rm-dialog .rm-btn-light,
+#rm-dialog .rm-btn-light:hover {
+  color: var(--rm-deep);
+}
+#rh-search-discovery .rm-btn-danger,
+#rh-search-discovery .rm-btn-danger:hover {
+  color: #9d3b3b;
+}
+#rh-search-discovery .rh-book {
+  color: #fff;
+}
+#rh-search-discovery .rh-book-yellow {
+  color: var(--rm-deep);
+}
+@media (max-width: 600px) {
+  #rh-search-discovery .app-brand {
+    gap: 7px;
+  }
+  #rh-search-discovery .app-brand img.app-brand-mark {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+  #rh-search-discovery .app-brand > span {
+    font-size: 12px;
+  }
+}

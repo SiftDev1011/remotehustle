@@ -689,7 +689,7 @@ test("all application tables have RLS enabled", async () => {
       "select relname,relrowsecurity from pg_class c join pg_namespace n on n.oid=c.relnamespace where n.nspname='public' and relkind='r'",
     )
   ).rows;
-  assert.equal(rows.length, 35);
+  assert.equal(rows.length, 36);
   assert.ok(rows.every((r) => r.relrowsecurity));
 });
 

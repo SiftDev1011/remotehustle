@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import sharp from "sharp";
 import { publishedBranding } from "@/lib/branding";
 import { brandLogoKey } from "@/lib/brand-settings";
@@ -8,8 +10,8 @@ export async function GET() {
   const { logoUrl } = await publishedBranding();
   const key = brandLogoKey(logoUrl, process.env.R2_PUBLIC_BASE_URL || "");
   let failed = false;
-  let source: Buffer = Buffer.from(
-    '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><rect width="512" height="512" rx="90" fill="#122d46"/><text x="256" y="320" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="220" fill="#ffffff">RH</text></svg>',
+  let source: Buffer = await readFile(
+    join(process.cwd(), "public", "brand", "remote-hustle-mark.png"),
   );
   if (key) {
     try {
