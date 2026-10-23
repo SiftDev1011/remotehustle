@@ -21,14 +21,12 @@ export async function GET(request: NextRequest) {
   }
   try {
     const db = serviceDb();
-    const started = await db
-      .from("maintenance_health")
-      .upsert({
-        name: "daily",
-        status: "running",
-        started_at: new Date().toISOString(),
-        finished_at: null,
-      });
+    const started = await db.from("maintenance_health").upsert({
+      name: "daily",
+      status: "running",
+      started_at: new Date().toISOString(),
+      finished_at: null,
+    });
     if (started.error) throw new Error("Unable to record maintenance status.");
     // Real Postgres activity, not just an Auth endpoint ping. This is best-effort and not an uptime guarantee.
     const health = await db.from("worker_accounts").select("user_id").limit(1);
@@ -96,13 +94,11 @@ export async function GET(request: NextRequest) {
     );
   } catch {
     try {
-      await serviceDb()
-        .from("maintenance_health")
-        .upsert({
-          name: "daily",
-          status: "failed",
-          finished_at: new Date().toISOString(),
-        });
+      await serviceDb().from("maintenance_health").upsert({
+        name: "daily",
+        status: "failed",
+        finished_at: new Date().toISOString(),
+      });
     } catch {}
     return NextResponse.json(
       { error: "Scheduled maintenance failed. Check service configuration." },

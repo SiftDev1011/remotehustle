@@ -1,7 +1,7 @@
 // Confirmed public business contact. Keep service credentials in environment variables.
 export const SUPPORT_EMAIL = "info@remotehustle.plug99com.ng";
-export const POLICY_VERSION = "2026-10-11";
-export const PURCHASE_POLICY = `All products in the Remote Hustle shop are digital. After payment is confirmed, sign in and open Your orders to download your files. A download email also links to your order.
+export const POLICY_VERSION = "2026-10-22";
+export const PURCHASE_POLICY = `All products in the REMOTE HUSTLE shop are digital. After payment is confirmed, sign in and open Your orders to download your files. A download email also links to your order.
 
 Please read the product description and check the file requirements before purchasing. We do not offer refunds for a change of mind.
 

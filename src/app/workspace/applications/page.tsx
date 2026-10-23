@@ -19,7 +19,7 @@ export default async function MyApplications() {
       />
       <PageHeading
         title="Your applications"
-        description="Track the applications you submit through Remote Hustle. Applications on company websites are managed by those companies."
+        description="Track the applications you submit through REMOTE HUSTLE. Applications on company websites are managed by those companies."
       />
       {data?.length ? (
         <div className="app-record-list">
@@ -54,7 +54,7 @@ export default async function MyApplications() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                View the CV used for this application ↗
+                View the CV used for this application
               </a>
             </article>
           ))}

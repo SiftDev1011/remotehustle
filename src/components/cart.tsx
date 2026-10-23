@@ -65,10 +65,10 @@ export function AddToCart({
         }}
       >
         {buyNow
-          ? "Continue to checkout ↗"
+          ? "Continue to checkout"
           : added
             ? "Added to cart ✓"
-            : "Add to cart ↗"}
+            : "Add to cart"}
       </button>
       {added && (
         <Link className="rm-text-link app-inline-link" href="/cart">
@@ -229,7 +229,7 @@ export function Cart({
         <h2>Your cart is waiting.</h2>
         <p>Explore the resources available for your next step.</p>
         <Link className="rm-btn" href="/shop">
-          Explore the shop ↗
+          Explore the shop
         </Link>
       </div>
     );
@@ -334,7 +334,7 @@ export function Cart({
             <div className="app-notice">
               <p>{gate.message}</p>
               <Link href={gate.href} className="rm-text-link">
-                Continue ↗
+                Continue
               </Link>
             </div>
           ) : !policies.refund_policy ? (
@@ -347,7 +347,7 @@ export function Cart({
               className="rm-btn"
               disabled={unavailable || busy}
             >
-              {busy ? "Creating your order…" : "Review & pay ↗"}
+              {busy ? "Creating your order…" : "Review & pay"}
             </button>
           )}
         </fieldset>

@@ -35,7 +35,7 @@ export function AccountNotice({ context }: { context: Context }) {
     return (
       <Notice tone="error">
         Your account is inactive. Applications and profile changes are
-        restricted. Contact the Remote Hustle team.
+        restricted. Contact the REMOTE HUSTLE team.
       </Notice>
     );
   if (!context.user.email_confirmed_at)

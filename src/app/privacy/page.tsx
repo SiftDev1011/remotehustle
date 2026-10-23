@@ -2,7 +2,7 @@ import { publicMetadata } from "@/lib/seo";
 export function generateMetadata() {
   return publicMetadata(
     "Privacy notice",
-    "How Remote Hustle handles account, application, purchase and contact information.",
+    "How REMOTE HUSTLE handles account, application, purchase and contact information.",
     "/privacy",
   );
 }
@@ -23,7 +23,7 @@ export default function Privacy() {
         <p>
           This notice explains how personal information is used when you
           register, apply for opportunities or buy digital resources through
-          Remote Hustle.{operator && <> The operator is {operator}.</>} For
+          REMOTE HUSTLE.{operator && <> The operator is {operator}.</>} For
           privacy enquiries, contact <a href={"mailto:" + contact}>{contact}</a>
           .
         </p>
@@ -40,7 +40,7 @@ export default function Privacy() {
           discount use, purchase issue reports and support replies. The shop
           sells digital products and does not ask for a delivery address.
           Payment card details are entered with the payment provider and are not
-          stored by Remote Hustle. Passwords are managed by our authentication
+          stored by REMOTE HUSTLE. Passwords are managed by our authentication
           provider and are not stored in a readable form by the app.
         </p>
         <p>
@@ -54,6 +54,20 @@ export default function Privacy() {
           network address; raw network addresses are not saved in the contact
           inbox. Expired rate-limit records are removed during subsequent
           submissions.
+        </p>
+        <h2>Programme registration</h2>
+        <p>
+          For REMOTE HUSTLE 1.0 we collect your certificate name, verified
+          email, date of birth, WhatsApp phone number, gender, country, state,
+          address, social handles, selected category, skill level, optional
+          professional platforms, referral source and agreement records. We use
+          these details to administer programme communications, training,
+          certificates and competitions. Authorised administrators with
+          user-management access can review and export submissions. Your answers
+          are not public. Programme records and access-code attempt counters are
+          removed when your account is deleted; downloaded administrative
+          exports must also be handled under our retention arrangements. Contact
+          us to correct a submission.
         </p>
         <h2>How we use your information</h2>
         <p>
@@ -88,7 +102,7 @@ export default function Privacy() {
         </p>
         <h2>Service providers</h2>
         <p>
-          Remote Hustle uses Vercel for hosting, Supabase for database and
+          REMOTE HUSTLE uses Vercel for hosting, Supabase for database and
           authentication services, Cloudflare R2 for file storage, Brevo for
           email and Paystack for payment processing. These services process
           information needed to perform their functions. Their infrastructure
@@ -134,7 +148,7 @@ export default function Privacy() {
         <h2>Cookies and browser storage</h2>
         <p>
           Authentication cookies maintain your sign-in session. Browser storage
-          remembers the products in your cart. Remote Hustle does not include
+          remembers the products in your cart. REMOTE HUSTLE does not include
           optional advertising or analytics trackers in this website.
         </p>
         <h2>Changes</h2>

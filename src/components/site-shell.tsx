@@ -1,3 +1,7 @@
+import { Brand } from "./brand";
+import { SocialLinks } from "./social-links";
+import { publishedBranding } from "@/lib/branding";
+import type { SocialLink } from "@/lib/brand-settings";
 import Link from "next/link";
 import { SUPPORT_EMAIL } from "@/lib/site-details";
 import { Navigation } from "./navigation";
@@ -8,10 +12,12 @@ import { publishedContact } from "@/lib/queries";
 // Optional shell data must never decide access or prevent a page from rendering.
 // Protected pages and actions still perform their own fresh permission checks.
 export async function AccountNavigation() {
+  const branding = await publishedBranding();
   try {
     const context = await getContext();
     return (
       <Navigation
+        logoUrl={branding.logoUrl}
         signedIn={!!context}
         isAdmin={!!context?.membership?.active}
       />
@@ -20,7 +26,11 @@ export async function AccountNavigation() {
     console.error("[site-shell] Account navigation temporarily unavailable.");
     return (
       <>
-        <Navigation signedIn={false} isAdmin={false} />
+        <Navigation
+          signedIn={false}
+          isAdmin={false}
+          logoUrl={branding.logoUrl}
+        />
         <div className="app-connection-notice" role="status">
           Account details couldn’t load. <RefreshButton />
         </div>
@@ -32,19 +42,21 @@ export async function AccountNavigation() {
 function Footer({
   contact,
   unavailable = false,
+  branding = { logoUrl: "", socials: [] },
 }: {
   contact?: Record<string, string>;
   unavailable?: boolean;
+  branding?: { logoUrl: string; socials: SocialLink[] };
 }) {
   return (
     <footer className="rh-footer rh-shell">
       <div>
-        <Link className="rh-logo" href="/">
-          remote hustle.
-        </Link>
+        <Brand logoUrl={branding.logoUrl} />
         <p>Providing opportunities for the best hands on deck.</p>
+        <SocialLinks links={branding.socials} />
       </div>
       <nav aria-label="Footer navigation">
+        <Link href="/registration">REMOTE HUSTLE 1.0 registration</Link>
         <Link href="/jobs">Find work</Link>
         <Link href="/programs">Build skills</Link>
         <Link href="/about">About & contact</Link>
@@ -68,7 +80,7 @@ function Footer({
           </p>
         )}
       </div>
-      <p>© {new Date().getFullYear()} Remote Hustle.</p>
+      <p>© {new Date().getFullYear()} REMOTE HUSTLE.</p>
     </footer>
   );
 }
@@ -78,12 +90,13 @@ export function FooterFallback() {
 }
 
 export async function SiteFooter() {
+  const branding = await publishedBranding();
   try {
-    return <Footer contact={await publishedContact()} />;
+    return <Footer contact={await publishedContact()} branding={branding} />;
   } catch {
     console.error(
       "[site-shell] Published contact details temporarily unavailable.",
     );
-    return <Footer unavailable />;
+    return <Footer unavailable branding={branding} />;
   }
 }

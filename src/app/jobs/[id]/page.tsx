@@ -71,7 +71,6 @@ export default async function JobDetail({
           {job.application_type === "internal"
             ? "Apply here"
             : "Apply on company site"}{" "}
-          ↗
         </a>
       </div>
       <JobDescription job={job} location={location} />
@@ -104,7 +103,7 @@ export default async function JobDetail({
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Apply on company site ↗
+                    Apply on company site
                   </a>
                 </>
               ) : (

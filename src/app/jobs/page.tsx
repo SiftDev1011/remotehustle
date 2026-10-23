@@ -84,7 +84,7 @@ export default async function Jobs({
           ))}
         </Dropdown>
         <button type="submit" className="rm-btn">
-          Find jobs ↗
+          Find jobs
         </button>
       </form>
       <p className="rm-note">

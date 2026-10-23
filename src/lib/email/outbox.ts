@@ -47,7 +47,7 @@ export async function deliverOutbox() {
         body: JSON.stringify({
           sender: {
             email: requiredEnv("EMAIL_FROM_ADDRESS"),
-            name: process.env.EMAIL_FROM_NAME || "Remote Hustle",
+            name: process.env.EMAIL_FROM_NAME || "REMOTE HUSTLE",
           },
           to: [{ email: recipient.data.email, name: recipient.data.full_name }],
           subject: content.subject,

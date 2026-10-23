@@ -2,7 +2,7 @@ import { publicMetadata } from "@/lib/seo";
 export function generateMetadata() {
   return publicMetadata(
     "Terms of use",
-    "Terms for using Remote Hustle, applying for opportunities and purchasing digital resources.",
+    "Terms for using REMOTE HUSTLE, applying for opportunities and purchasing digital resources.",
     "/terms",
   );
 }
@@ -26,7 +26,7 @@ export default async function Terms() {
       />
       <div className="app-prose">
         <p>
-          These terms apply to your use of Remote Hustle, including accounts,
+          These terms apply to your use of REMOTE HUSTLE, including accounts,
           job applications and purchases of digital resources.
           {operator && <> The operator is {operator}.</>} Contact{" "}
           <a href={"mailto:" + SUPPORT_EMAIL}>{SUPPORT_EMAIL}</a> with questions
@@ -37,13 +37,13 @@ export default async function Terms() {
           Provide accurate information, use an email address you control and
           keep your password private. Verify your email, obtain account approval
           and complete the required profile details before applying through
-          Remote Hustle or checking out. Keep your profile up to date. Our{" "}
+          REMOTE HUSTLE or checking out. Keep your profile up to date. Our{" "}
           <Link href="/privacy">privacy notice</Link> explains how your
           information is used.
         </p>
         <h2>Opportunities and applications</h2>
         <p>
-          Remote Hustle publishes opportunities supplied or approved by the
+          REMOTE HUSTLE publishes opportunities supplied or approved by the
           team. Applying does not guarantee employment, an interview or
           acceptance. Employers make their own decisions. External application
           links lead to another organisation's process and terms. Read the role

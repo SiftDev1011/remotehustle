@@ -28,7 +28,10 @@ export default async function AdminLayout({
             <Link href="/admin/attention">Needs attention</Link>
             <Link href="/admin/analytics">Analytics</Link>
             {canManage(membership, "users") && (
-              <Link href="/admin/users">Workers</Link>
+              <>
+                <Link href="/admin/users">Workers</Link>
+                <Link href="/admin/registrations">Programme registrations</Link>
+              </>
             )}
             {canManage(membership, "jobs") && (
               <>

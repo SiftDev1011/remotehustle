@@ -482,21 +482,6 @@
   align-self: start;
   font-size: 12px;
 }
-#rh-search-discovery .app-loading {
-  min-height: 55vh;
-}
-#rh-search-discovery .app-skeleton {
-  height: 20px;
-  width: 75%;
-  background: var(--rm-soft);
-  border-radius: 5px;
-  margin: 24px 0;
-  animation: app-loading 1.2s alternate infinite;
-}
-#rh-search-discovery .app-skeleton-title {
-  height: 62px;
-  width: 55%;
-}
 @keyframes app-word {
   from {
     opacity: 0;
@@ -505,11 +490,6 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-@keyframes app-loading {
-  to {
-    opacity: 0.4;
   }
 }
 @media (max-width: 1000px) {
@@ -2431,5 +2411,161 @@
   }
   #rh-search-discovery .app-swipe-strip .app-swipe-set[aria-hidden="true"] {
     display: none;
+  }
+}
+
+/* Shared branding and compact digital resources. */
+#rh-search-discovery .app-brand {
+  flex-shrink: 0;
+  max-width: 180px;
+}
+#rh-search-discovery .app-brand img {
+  display: block;
+  width: auto;
+  max-width: 164px;
+  height: 48px;
+  object-fit: contain;
+}
+#rh-search-discovery .app-brand > span {
+  font-size: 17px;
+  line-height: 1.05;
+  letter-spacing: 0.035em;
+}
+#rh-search-discovery .app-social-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+#rh-search-discovery .app-social-links a {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+#rh-search-discovery .app-social-links a:hover {
+  background: #e8f2f8;
+  transform: translateY(-2px);
+}
+#rh-search-discovery .app-products-single {
+  grid-template-columns: minmax(0, 380px);
+}
+#rh-search-discovery .app-products-compact {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
+  gap: 24px;
+}
+#rh-search-discovery .app-products-compact .app-product-card {
+  max-width: 320px;
+  min-width: 0;
+}
+#rh-search-discovery .app-products-compact .app-product-image {
+  aspect-ratio: 1.35;
+  border-radius: 10px;
+}
+#rh-search-discovery .app-products-compact h3 {
+  font-size: 16px;
+}
+#rh-search-discovery .app-products-compact .app-product-copy p {
+  font-size: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+#rh-search-discovery .app-products-compact strong {
+  font-size: 14px;
+}
+#rh-search-discovery .app-registration {
+  max-width: 900px;
+}
+#rh-search-discovery .app-registration-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+#rh-search-discovery .app-registration-grid .app-field {
+  min-width: 0;
+}
+#rh-search-discovery .app-registration h2 {
+  font-size: 23px;
+  margin-top: 22px;
+}
+#rh-search-discovery .app-registration-summary {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) minmax(0, 2fr);
+  gap: 12px 24px;
+}
+#rh-search-discovery .app-registration-summary dt {
+  color: #536778;
+}
+#rh-search-discovery .app-registration-summary dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+#rh-search-discovery .app-form-success {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 680px) {
+  #rh-search-discovery .app-brand img {
+    max-width: 120px;
+    height: 38px;
+  }
+  #rh-search-discovery .app-brand > span {
+    font-size: 14px;
+  }
+  #rh-search-discovery .app-products-compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 14px;
+  }
+  #rh-search-discovery .app-products-compact h3 {
+    font-size: 14px;
+    overflow-wrap: anywhere;
+  }
+  #rh-search-discovery .app-products-compact strong {
+    font-size: 13px;
+  }
+  #rh-search-discovery .app-products-compact .rm-eyebrow {
+    font-size: 10px;
+  }
+  #rh-search-discovery .app-products-compact .app-product-image > span {
+    font-size: 48px;
+  }
+  #rh-search-discovery .app-registration-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #rh-search-discovery .app-registration-summary {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+  #rh-search-discovery .app-registration-summary dd {
+    margin-bottom: 12px;
+  }
+}
+
+/* Phone-country selection is independent of residence. */
+#rh-search-discovery .app-phone-field {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+  grid-column: 1/-1;
+  min-width: 0;
+}
+#rh-search-discovery .app-phone-field .app-field {
+  min-width: 0;
+}
+#rh-search-discovery .app-phone-help {
+  grid-column: 1/-1;
+  margin: 0;
+}
+@media (max-width: 480px) {
+  #rh-search-discovery .app-phone-field {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
   }
 }

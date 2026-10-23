@@ -135,7 +135,7 @@ export async function processRefundAction(
     const result = await paymentGateway().refund(
       row.data.payment_reference,
       row.data.amount_minor,
-      "Remote Hustle refund " + id,
+      "REMOTE HUSTLE refund " + id,
     );
     await saveRefundResult(id, result);
     changed(row.data.order_id);

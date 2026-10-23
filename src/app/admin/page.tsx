@@ -33,14 +33,14 @@ export default async function AdminHome() {
           (area) => (
             <Link className="app-card" href={links[area]} key={area}>
               <span className="rm-eyebrow">{area}</span>
-              <h3>{labels[area]} ↗</h3>
+              <h3>{labels[area]}</h3>
             </Link>
           ),
         )}
       </div>
       {context.membership?.role === "super_admin" && (
         <Link className="rm-btn" href="/admin/administrators">
-          Administrator access ↗
+          Administrator access
         </Link>
       )}
     </main>

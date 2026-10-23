@@ -31,11 +31,17 @@ export default async function SignIn({
       <SignInForm next={safeNext(query.next)} />
       <p className="rm-note">
         New here?{" "}
-        <Link className="rm-text-link" href="/sign-up">
+        <Link
+          className="rm-text-link"
+          href={"/sign-up?next=" + encodeURIComponent(safeNext(query.next))}
+        >
           Create an account
         </Link>
       </p>
-      <Link className="rm-text-link" href="/verify-email">
+      <Link
+        className="rm-text-link"
+        href={"/verify-email?next=" + encodeURIComponent(safeNext(query.next))}
+      >
         Resend verification email
       </Link>
     </main>

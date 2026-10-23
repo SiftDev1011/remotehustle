@@ -1,0 +1,157 @@
+/* Geometry is inherited from the real page/card classes. Skeletons never
+   contain focusable controls, and assistive technology gets one status only. */
+#rh-search-discovery .rh-loading-page {
+  min-height: 55vh;
+}
+#rh-search-discovery .rh-skeleton-content {
+  min-width: 0;
+}
+#rh-search-discovery .rh-bone,
+#rh-search-discovery .rh-skeleton-surface {
+  display: block;
+  max-width: 100%;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--rm-deep) 9%, #fff);
+  animation: rh-skeleton-breathe 1.8s ease-in-out infinite alternate;
+}
+#rh-search-discovery .rh-bone {
+  flex-shrink: 0;
+}
+#rh-search-discovery .rh-skeleton-lines {
+  display: grid;
+  gap: 10px;
+  margin: 12px 0;
+}
+#rh-search-discovery .rh-skeleton-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+#rh-search-discovery .rh-skeleton-stack .rh-skeleton-lines {
+  margin: 0;
+}
+#rh-search-discovery .rh-skeleton-crumb {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  min-height: 30px;
+}
+#rh-search-discovery .rh-skeleton-heading {
+  width: 100%;
+  min-width: 0;
+}
+#rh-search-discovery .rh-skeleton-heading > .rh-bone + .rh-bone {
+  margin-top: 12px;
+}
+#rh-search-discovery .rh-skeleton-description {
+  max-width: 640px;
+  margin-top: 10px;
+}
+#rh-search-discovery .rh-skeleton-button {
+  border-radius: 7px;
+}
+#rh-search-discovery .rh-skeleton-round {
+  border-radius: 50%;
+}
+#rh-search-discovery .rh-skeleton-control {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+#rh-search-discovery .rh-skeleton-record-copy {
+  flex: 1;
+  min-width: 0;
+}
+#rh-search-discovery .rh-skeleton-filter {
+  width: 210px;
+  max-width: 100%;
+}
+#rh-search-discovery .rh-skeleton-thumbnail {
+  flex: 0 0 90px;
+}
+#rh-search-discovery .rh-skeleton-service {
+  background: var(--rm-soft);
+  pointer-events: none;
+}
+#rh-search-discovery .rh-skeleton-service::after {
+  display: none;
+}
+#rh-search-discovery .rh-skeleton-service .rh-service-body {
+  animation: none;
+}
+#rh-search-discovery .rh-skeleton-hero-title {
+  display: grid;
+  gap: 10px;
+  font-size: clamp(36px, 4.4vw, 64px);
+}
+#rh-search-discovery .rh-skeleton-service .rh-skeleton-description {
+  margin: 22px 0;
+}
+#rh-search-discovery .rh-skeleton-service .rh-service-label {
+  writing-mode: initial;
+}
+#rh-search-discovery .rh-skeleton-service:not(.is-active) .rh-service-label {
+  left: 50%;
+  transform: translateX(-50%);
+}
+#rh-search-discovery .rh-skeleton-sidebar-items {
+  display: grid;
+  gap: 27px;
+  margin-top: 36px;
+}
+#rh-search-discovery .rh-skeleton-sidebar {
+  pointer-events: none;
+}
+#rh-search-discovery .app-program-image.rh-skeleton-surface {
+  aspect-ratio: 600 / 320;
+  max-height: 300px;
+  width: 100%;
+}
+#rh-search-discovery .app-product-copy .rh-skeleton-copy-lines {
+  margin-bottom: 14px;
+}
+@keyframes rh-skeleton-breathe {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+@media (max-width: 880px) {
+  #rh-search-discovery:has(.app-cart-floating) .rh-skeleton-crumb {
+    padding-left: 50px;
+    min-height: 36px;
+    flex-wrap: wrap;
+  }
+  #rh-search-discovery .rh-skeleton-sidebar {
+    padding: 18px;
+    min-height: 60px;
+  }
+  #rh-search-discovery .rh-skeleton-sidebar-items {
+    display: none;
+  }
+}
+@media (max-width: 680px) {
+  #rh-search-discovery .rh-skeleton-hero-title {
+    font-size: clamp(32px, 8.5vw, 46px);
+  }
+  #rh-search-discovery .rh-skeleton-service:not(.is-active) .rh-service-label {
+    left: 52px;
+    transform: none;
+  }
+  #rh-search-discovery .rh-skeleton-filter {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #rh-search-discovery .rh-bone,
+  #rh-search-discovery .rh-skeleton-surface {
+    animation: none;
+  }
+}
+
+#rh-search-discovery .app-product-copy .rh-skeleton-lines {
+  margin: 0;
+}

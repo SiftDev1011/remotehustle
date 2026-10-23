@@ -1,8 +1,8 @@
 import { publicMetadata } from "@/lib/seo";
 export function generateMetadata() {
   return publicMetadata(
-    "About Remote Hustle",
-    "Learn about Remote Hustle and contact our team about opportunities, programmes and digital resources.",
+    "About REMOTE HUSTLE",
+    "Learn about REMOTE HUSTLE and contact our team about opportunities, programmes and digital resources.",
     "/about",
   );
 }
@@ -20,8 +20,8 @@ export default async function About() {
     };
   return (
     <main id="rh-main" className="rm-page rm-shell rm-narrow">
-      <Breadcrumbs items={[{ label: "About Remote Hustle" }]} />
-      <PageHeading title="About Remote Hustle" />
+      <Breadcrumbs items={[{ label: "About REMOTE HUSTLE" }]} />
+      <PageHeading title="About REMOTE HUSTLE" />
       <figure className="rh-about-photo">
         <img
           src={about?.image_url || "/photos/about-workspace.jpg"}
@@ -34,16 +34,16 @@ export default async function About() {
         <h2>{about?.title || "A place to prepare and move forward."}</h2>
         <p className="app-preline">
           {about?.body ||
-            "Remote Hustle brings remote opportunities, professional profiles, training, internships and career resources together. Workers can present their experience, explore roles and take their next step through one platform."}
+            "REMOTE HUSTLE brings remote opportunities, professional profiles, training, internships and career resources together. Workers can present their experience, explore roles and take their next step through one platform."}
         </p>
         <p>
-          The Remote Hustle team manages opportunities, programmes, products and
+          The REMOTE HUSTLE team manages opportunities, programmes, products and
           partnering organisations. Applications on company websites follow the
           employer’s own process.
         </p>
       </div>
       <Link className="rm-btn" href="/sign-up">
-        Create your profile ↗
+        Create your profile
       </Link>
       {contact && (
         <section id="contact" className="app-card app-section">

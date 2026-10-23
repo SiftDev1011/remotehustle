@@ -30,10 +30,9 @@ export default async function Workspace() {
           {context.progress.percent === 100
             ? "Edit your profile"
             : "Complete your profile"}{" "}
-          ↗
         </Link>
         <Link className="rm-btn rm-btn-light" href="/jobs">
-          Explore jobs ↗
+          Explore jobs
         </Link>
       </div>
       <section className="app-section">

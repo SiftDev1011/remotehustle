@@ -71,7 +71,7 @@ export default async function PurchaseIssues({
                   className="rm-text-link"
                   href={"/admin/orders/" + issue.order_id}
                 >
-                  Order {issue.order_id.slice(0, 8).toUpperCase()} ↗
+                  Order {issue.order_id.slice(0, 8).toUpperCase()}
                 </Link>
                 <Badge>{issue.status.replaceAll("_", " ")}</Badge>
               </div>

@@ -1,3 +1,4 @@
+import { SOCIAL_PLATFORMS } from "@/lib/brand-settings";
 import { SUPPORT_EMAIL, PURCHASE_POLICY } from "@/lib/site-details";
 import { Disclosure } from "@/components/disclosure";
 import Link from "next/link";
@@ -11,8 +12,10 @@ export default async function Content() {
   const { data, error } = await context.db.from("site_content").select("*");
   if (error) throw new Error("Unable to load website content.");
   const sections = [
+    { key: "branding", title: "Site logo" },
+    { key: "socials", title: "Social media links" },
     { key: "home-images", title: "Homepage images" },
-    { key: "about", title: "About Remote Hustle" },
+    { key: "about", title: "About REMOTE HUSTLE" },
     { key: "contact", title: "Contact details" },
     { key: "commerce", title: "Purchase support and downloads" },
     ...[
@@ -40,9 +43,9 @@ export default async function Content() {
         description="Publish approved copy and imagery. Unpublished sections use the website’s existing introductory copy."
       />
       <div className="app-inline-links">
-        <Link href="/admin/programs">Programmes ↗</Link>
-        <Link href="/admin/testimonials">Testimonials ↗</Link>
-        <Link href="/admin/impact">Impact figures ↗</Link>
+        <Link href="/admin/programs">Programmes</Link>
+        <Link href="/admin/testimonials">Testimonials</Link>
+        <Link href="/admin/impact">Impact figures</Link>
       </div>
       <div className="app-record-list">
         {sections.map((section) => {
@@ -56,6 +59,41 @@ export default async function Content() {
             >
               <ActionForm action={saveContentAction}>
                 <input type="hidden" name="key" value={section.key} />
+                {section.key === "branding" && (
+                  <>
+                    <p className="rm-note">
+                      Upload the official logo, then publish and save. It
+                      appears in the header, footer and site icon. A square,
+                      transparent PNG works best for small icons. Clearing the
+                      image restores the wordmark. Search engines refresh icons
+                      on their own schedule.
+                    </p>
+                    <AssetUpload
+                      area="content"
+                      name="logo_url"
+                      label="Official logo"
+                      initial={v.logo_url || ""}
+                    />
+                  </>
+                )}
+                {section.key === "socials" && (
+                  <>
+                    <p className="rm-note">
+                      Enter full HTTPS profile links. Leave a field blank to
+                      hide its icon in the footer.
+                    </p>
+                    {SOCIAL_PLATFORMS.map((p) => (
+                      <Input
+                        key={p.key}
+                        label={p.label}
+                        name={p.key}
+                        type="url"
+                        maxLength={2000}
+                        defaultValue={v[p.key] || ""}
+                      />
+                    ))}
+                  </>
+                )}
                 {section.key === "home-images" && (
                   <>
                     <p className="rm-note">

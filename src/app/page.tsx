@@ -90,7 +90,7 @@ export default async function Home() {
             </span>
           </label>
           <button type="submit" className="rh-button rh-button-yellow">
-            Find opportunities ↗
+            Find opportunities
           </button>
         </form>
       </section>
@@ -101,7 +101,7 @@ export default async function Home() {
         <div className="rh-section-head">
           <h2>Explore your next opportunity.</h2>
           <Link className="rh-text-link" href="/jobs">
-            View all ↗
+            View all
           </Link>
         </div>
         {jobs.length ? (
@@ -136,7 +136,6 @@ export default async function Home() {
             {records.programs.length ? (
               records.programs.map((p) => (
                 <Link key={p.id} className="rh-course" href="/programs">
-                  <span className="rh-course-symbol">↗</span>
                   <span>
                     <strong>{p.title}</strong>
                     <small>{p.type}</small>
@@ -150,7 +149,7 @@ export default async function Home() {
             )}
           </div>
           <Link className="rh-button" href="/programs">
-            Explore programmes ↗
+            Explore programmes
           </Link>
         </div>
         <div className="rh-learning-photo">
@@ -169,14 +168,14 @@ export default async function Home() {
       </section>
       <section className="rh-about rh-shell" id="rh-about">
         <div className="rh-about-copy">
-          <p className="rh-section-label">About Remote Hustle</p>
+          <p className="rh-section-label">About REMOTE HUSTLE</p>
           <h2>{about?.title || "Opportunity begins with preparation."}</h2>
           <p className="app-preline">
             {about?.body ||
-              "Remote Hustle brings remote opportunities, professional profiles, training, internships and career resources together. It gives workers a place to prepare, explore and take their next step."}
+              "REMOTE HUSTLE brings remote opportunities, professional profiles, training, internships and career resources together. It gives workers a place to prepare, explore and take their next step."}
           </p>
           <Link className="rh-button" href="/about">
-            About Remote Hustle ↗
+            About REMOTE HUSTLE
           </Link>
         </div>
         <figure className="rh-about-photo">
@@ -190,7 +189,7 @@ export default async function Home() {
             height={1086}
             alt={
               images?.about_image_url
-                ? images.about_image_alt || "About Remote Hustle"
+                ? images.about_image_alt || "About REMOTE HUSTLE"
                 : "A laptop, notebook and document folder on an unoccupied desk"
             }
             loading="lazy"
@@ -200,15 +199,22 @@ export default async function Home() {
       <section className="rh-shell app-home-shop">
         <div className="rh-section-head">
           <div>
-            <p className="rh-section-label">The Remote Hustle shop</p>
+            <p className="rh-section-label">The REMOTE HUSTLE shop</p>
             <h2>Show up prepared.</h2>
           </div>
           <Link className="rh-text-link" href="/shop">
-            Explore resources ↗
+            Explore resources
           </Link>
         </div>
         {shop.products.length ? (
-          <div className="app-product-grid">
+          <div
+            className={
+              "app-product-grid " +
+              (shop.products.length > 1
+                ? "app-products-compact"
+                : "app-products-single")
+            }
+          >
             {shop.products.slice(0, 3).map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}

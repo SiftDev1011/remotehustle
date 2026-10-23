@@ -118,7 +118,7 @@ export default async function AdminOrder({
       </section>
       {refunds.data.length > 0 && (
         <Link className="rm-btn" href={"/admin/refunds?order=" + id}>
-          Review refunds ↗
+          Review refunds
         </Link>
       )}
     </main>

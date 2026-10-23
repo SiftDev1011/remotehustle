@@ -114,7 +114,7 @@ export default async function Workers({
                       className="rm-text-link"
                       href={"/admin/users/" + row.user_id}
                     >
-                      Open profile ↗
+                      Open profile
                     </Link>
                   </td>
                 </tr>

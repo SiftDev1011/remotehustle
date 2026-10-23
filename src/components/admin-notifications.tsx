@@ -191,7 +191,7 @@ export function AdminNotifications() {
           href="/admin/attention"
           onClick={() => setOpen(false)}
         >
-          View all tasks <span aria-hidden="true">↗</span>
+          View all tasks
         </Link>
       </section>
     </div>

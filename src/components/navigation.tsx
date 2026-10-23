@@ -3,15 +3,18 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AdminNotifications } from "./admin-notifications";
+import { Brand } from "./brand";
 import { CartCount } from "./cart";
 import { signOutAction } from "@/actions/auth";
 
 export function Navigation({
   signedIn,
   isAdmin,
+  logoUrl = "",
 }: {
   signedIn: boolean;
   isAdmin: boolean;
+  logoUrl?: string;
 }) {
   const [open, setOpen] = useState(false);
   const path = usePathname();
@@ -51,6 +54,7 @@ export function Navigation({
   }, [open]);
   const links = [
     { href: "/#rh-services", label: "Services" },
+    { href: "/registration", label: "Register 1.0" },
     { href: "/jobs", label: "Find work" },
     { href: "/programs", label: "Build skills" },
     { href: "/shop", label: "Shop" },
@@ -76,16 +80,7 @@ export function Navigation({
       }}
     >
       <header className="rh-header rh-shell">
-        <Link className="rh-logo" href="/" aria-label="Remote Hustle home">
-          <span className="rh-logo-mark" aria-hidden="true">
-            ↗
-          </span>
-          <span>
-            remote
-            <br />
-            hustle.
-          </span>
-        </Link>
+        <Brand logoUrl={logoUrl} />
         <nav className="rh-nav" aria-label="Main navigation">
           {links.map((link) => (
             <Link
@@ -110,7 +105,6 @@ export function Navigation({
             <span className="rh-short-label">
               {signedIn ? "Workspace" : "Join now"}
             </span>
-            <span aria-hidden="true">↗</span>
           </Link>
         </div>
         <button

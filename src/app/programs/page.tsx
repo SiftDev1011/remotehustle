@@ -1,8 +1,9 @@
+import Link from "next/link";
 import { publicMetadata } from "@/lib/seo";
 export function generateMetadata() {
   return publicMetadata(
     "Training & internships",
-    "Explore practical training and internship opportunities with Remote Hustle.",
+    "Explore practical training and internship opportunities with REMOTE HUSTLE.",
     "/programs",
   );
 }
@@ -24,8 +25,13 @@ export default async function Programs({
       <PageHeading
         spacious
         title="Build toward your next step."
-        description="Explore training and internship opportunities announced by Remote Hustle."
+        description="Explore training and internship opportunities announced by REMOTE HUSTLE."
       />
+      <p className="app-inline-links">
+        <Link className="rm-btn rm-btn-secondary" href="/registration">
+          Register for REMOTE HUSTLE 1.0
+        </Link>
+      </p>
       {programs.length ? (
         <div className="app-record-list">
           {programs.map((p) => (
@@ -57,7 +63,7 @@ export default async function Programs({
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Programme information ↗
+                  Programme information
                 </a>
               )}
             </article>

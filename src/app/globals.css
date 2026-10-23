@@ -2433,13 +2433,13 @@ body {
     transform: none;
   }
   #rh-search-discovery
-    .rh-service[data-rh-service-name="Remote Hustle overview"]
+    .rh-service[data-rh-service-name="REMOTE HUSTLE overview"]
     .rh-service-body
     h2 {
     font-size: clamp(32px, 8.5vw, 46px);
   }
   #rh-search-discovery
-    .rh-service[data-rh-service-name="Remote Hustle overview"]
+    .rh-service[data-rh-service-name="REMOTE HUSTLE overview"]
     .rh-service-body
     p {
     margin: 18px 0;

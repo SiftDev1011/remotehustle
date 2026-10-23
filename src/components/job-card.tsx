@@ -21,7 +21,7 @@ export function JobCard({ job, location }: { job: Job; location?: string }) {
         {job.salary_min != null && <small>per {job.salary_period}</small>}
       </div>
       <Link className="app-job-link" href={"/jobs/" + job.id}>
-        View opportunity <span aria-hidden="true">↗</span>
+        View opportunity
       </Link>
     </article>
   );

@@ -1,3 +1,4 @@
+import { PhoneField } from "./phone-field";
 import { Captcha } from "./captcha";
 import Link from "next/link";
 import { ActionForm } from "./action-form";
@@ -10,13 +11,14 @@ import {
   resetPasswordAction,
 } from "@/actions/auth";
 
-export function SignUpForm() {
+export function SignUpForm({ next = "/workspace" }: { next?: string }) {
   return (
     <ActionForm
       action={signUpAction}
       label="Create your account"
       refresh={false}
     >
+      <input type="hidden" name="next" value={next} />
       <Input
         label="Full name"
         name="full_name"
@@ -33,15 +35,7 @@ export function SignUpForm() {
         required
         maxLength={254}
       />
-      <Input
-        label="Phone number"
-        name="phone"
-        type="tel"
-        autoComplete="tel"
-        placeholder="080… or +234…"
-        required
-        maxLength={40}
-      />
+      <PhoneField />
       <Input
         label="Password"
         name="password"
@@ -106,13 +100,20 @@ export function SignInForm({ next }: { next: string }) {
     </ActionForm>
   );
 }
-export function VerificationForm({ email }: { email: string }) {
+export function VerificationForm({
+  email,
+  next = "/workspace",
+}: {
+  email: string;
+  next?: string;
+}) {
   return (
     <ActionForm
       action={resendVerificationAction}
       label="Resend verification email"
       refresh={false}
     >
+      <input type="hidden" name="next" value={next} />
       <Input
         label="Email address"
         name="email"

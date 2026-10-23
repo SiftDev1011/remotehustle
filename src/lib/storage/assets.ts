@@ -189,3 +189,23 @@ export async function removeAssetStage(key: string) {
     }),
   );
 }
+
+// Read only a validated key from our own public image bucket, never a user-supplied host.
+export async function brandImageBytes(key: string) {
+  if (!/^images\/[a-f0-9-]{36}\.webp$/.test(key))
+    throw new Error("Invalid logo key");
+  const result = await client().send(
+    new GetObjectCommand({ Bucket: requiredEnv("R2_PUBLIC_BUCKET"), Key: key }),
+    { abortSignal: AbortSignal.timeout(8000) },
+  );
+  if (!result.Body || (result.ContentLength || 0) > 10 * 1024 * 1024)
+    throw new Error("Logo unavailable");
+  const chunks: Buffer[] = [];
+  let size = 0;
+  for await (const chunk of result.Body as AsyncIterable<Uint8Array>) {
+    size += chunk.length;
+    if (size > 10 * 1024 * 1024) throw new Error("Logo too large");
+    chunks.push(Buffer.from(chunk));
+  }
+  return Buffer.concat(chunks);
+}

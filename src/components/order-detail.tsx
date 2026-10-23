@@ -54,7 +54,7 @@ export function OrderDetail({
                 item.type === "digital" &&
                 (order.payment_status === "paid" && !blocked ? (
                   <a className="rm-btn" href={"/api/downloads/" + item.id}>
-                    Download ↗
+                    Download
                   </a>
                 ) : (
                   <p className="rm-note">
@@ -147,7 +147,7 @@ export function OrderDetail({
               <p className="app-preline">{issue.message}</p>
               {issue.admin_reply ? (
                 <div className="app-issue-reply">
-                  <strong>Reply from Remote Hustle</strong>
+                  <strong>Reply from REMOTE HUSTLE</strong>
                   <p className="app-preline">{issue.admin_reply}</p>
                 </div>
               ) : (
@@ -168,7 +168,7 @@ export function OrderDetail({
                     "/admin/purchase-issues?order=" + order.id + "&status=all"
                   }
                 >
-                  Manage purchase issues ↗
+                  Manage purchase issues
                 </Link>
               )}
             </article>
@@ -213,7 +213,7 @@ export function OrderDetail({
       )}
       {!admin && (
         <Link className="rm-text-link app-section" href="/shop">
-          Continue exploring ↗
+          Continue exploring
         </Link>
       )}
     </>

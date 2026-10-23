@@ -21,7 +21,7 @@ export function PageFailure({
       <h1>Let’s try that again.</h1>
       <p className="rm-note">
         The connection may have been interrupted. Wait a moment, then try again.
-        If this keeps happening, contact the Remote Hustle team.
+        If this keeps happening, contact the REMOTE HUSTLE team.
       </p>
       <div className="rm-actions">
         <button

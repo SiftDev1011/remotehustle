@@ -1,4 +1,5 @@
 "use server";
+import { normalizeInternationalPhone } from "@/lib/international-phone";
 import { authCaptcha } from "@/lib/captcha";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -40,11 +41,23 @@ export async function signUpAction(
   form: FormData,
 ): Promise<ActionState> {
   let email: string;
+  const next = safeNext(form.get("next"));
   try {
+    let phone: string;
+    try {
+      phone = normalizeInternationalPhone(
+        form.get("phone"),
+        form.get("phone_country") || "NG",
+      );
+    } catch (e) {
+      return {
+        error: e instanceof Error ? e.message : "Check your phone number.",
+      };
+    }
     const result = signupSchema.safeParse({
       full_name: form.get("full_name"),
       email: form.get("email"),
-      phone: form.get("phone"),
+      phone,
       password: form.get("password"),
       consent: form.get("consent") === "on",
       marketing_consent: form.get("marketing_consent") === "on",
@@ -59,7 +72,10 @@ export async function signUpAction(
       options: {
         data: metadata,
         captchaToken: authCaptcha(form),
-        emailRedirectTo: appUrl() + "/auth/confirm?next=/workspace",
+        emailRedirectTo:
+          appUrl() +
+          "/auth/confirm?next=" +
+          encodeURIComponent(safeNext(form.get("next"))),
       },
     });
     if (error) return { error: authError(error) };
@@ -73,7 +89,12 @@ export async function signUpAction(
   } catch (error) {
     return { error: publicError(error) };
   }
-  redirect("/verify-email?email=" + encodeURIComponent(email));
+  redirect(
+    "/verify-email?email=" +
+      encodeURIComponent(email) +
+      "&next=" +
+      encodeURIComponent(next),
+  );
 }
 export async function signInAction(
   _previous: ActionState,
@@ -112,7 +133,10 @@ export async function resendVerificationAction(
       email: result.data,
       options: {
         captchaToken: authCaptcha(form),
-        emailRedirectTo: appUrl() + "/auth/confirm?next=/workspace",
+        emailRedirectTo:
+          appUrl() +
+          "/auth/confirm?next=" +
+          encodeURIComponent(safeNext(form.get("next"))),
       },
     });
     if (error) return { error: authError(error) };

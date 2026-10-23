@@ -79,7 +79,7 @@ export default async function Applicants({
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  View/download CV ↗
+                  View/download CV
                 </a>
               </div>
               {a.cover_note && (

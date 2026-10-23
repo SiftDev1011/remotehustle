@@ -28,8 +28,8 @@ export default async function Shop({
   );
   return (
     <main id="rh-main" className="rm-page rm-shell app-shop-page">
-      <Breadcrumbs items={[{ label: "Remote Hustle shop" }]} />
-      <h1 className="app-visually-hidden">Remote Hustle shop</h1>
+      <Breadcrumbs items={[{ label: "REMOTE HUSTLE shop" }]} />
+      <h1 className="app-visually-hidden">REMOTE HUSTLE shop</h1>
       <div className="app-shop-toolbar">
         <form className="app-filter-bar">
           <label className="app-field">
@@ -52,7 +52,7 @@ export default async function Shop({
               ))}
             </Dropdown>
           </label>
-          <button className="rm-btn">Search ↗</button>
+          <button className="rm-btn">Search</button>
           {(query.q || query.category) && (
             <Link href="/shop">Clear filters</Link>
           )}
@@ -60,12 +60,19 @@ export default async function Shop({
         <div className="app-shop-actions">
           <CartCount variant="button" />
           <Link className="rm-btn rm-btn-secondary" href="/workspace/orders">
-            Your orders ↗
+            Your orders
           </Link>
         </div>
       </div>
       {filtered.length ? (
-        <div className="app-product-grid">
+        <div
+          className={
+            "app-product-grid " +
+            (filtered.length > 1
+              ? "app-products-compact"
+              : "app-products-single")
+          }
+        >
           {filtered.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}

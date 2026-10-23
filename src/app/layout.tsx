@@ -9,13 +9,19 @@ import {
 import { Navigation } from "@/components/navigation";
 import "./globals.css";
 import "./app-shell.css";
+import "./skeletons.css";
 
 export const metadata: Metadata = {
+  applicationName: "REMOTE HUSTLE",
+  icons: {
+    icon: [{ url: "/brand-icon.png", type: "image/png", sizes: "512x512" }],
+    apple: [{ url: "/brand-icon.png", sizes: "512x512" }],
+  },
   robots: { index: indexingEnabled(), follow: true },
   verification: { google: process.env.GOOGLE_SITE_VERIFICATION || undefined },
   title: {
-    default: "Remote Hustle | Work. Learn. Move forward.",
-    template: "%s | Remote Hustle",
+    default: "REMOTE HUSTLE | Work. Learn. Move forward.",
+    template: "%s | REMOTE HUSTLE",
   },
   description:
     "Remote jobs, practical training, internships and career resources. Providing opportunities for the best hands on deck.",

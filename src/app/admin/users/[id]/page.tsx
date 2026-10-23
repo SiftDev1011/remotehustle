@@ -43,7 +43,7 @@ export default async function WorkerDetail({
           target="_blank"
           rel="noopener noreferrer"
         >
-          View/download CV ↗
+          View/download CV
         </a>
       )}
       <ProfileForm

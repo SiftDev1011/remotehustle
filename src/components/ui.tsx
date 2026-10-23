@@ -60,9 +60,6 @@ export function EmptyState({
 }) {
   return (
     <div className="app-empty">
-      <span className="app-empty-icon" aria-hidden="true">
-        ↗
-      </span>
       <h3>{title}</h3>
       {children && <p>{children}</p>}
     </div>

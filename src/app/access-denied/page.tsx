@@ -10,7 +10,7 @@ export default function AccessDenied() {
         description="Your administrator account has not been assigned access to this area. Ask the workspace owner to update your permissions."
       />
       <Link className="rm-btn" href="/workspace">
-        Your workspace ↗
+        Your workspace
       </Link>
     </main>
   );

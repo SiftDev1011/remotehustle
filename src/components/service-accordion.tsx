@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const services = [
   {
-    label: "Remote Hustle overview",
+    label: "REMOTE HUSTLE overview",
     image: "overview-workspace",
     heading: (
       <>
@@ -19,7 +19,7 @@ const services = [
     ),
     copy: "Remote jobs, practical training, internships, and career resources. Make your next move with more confidence.",
     href: "/#rh-about",
-    link: "Discover Remote Hustle",
+    link: "Discover REMOTE HUSTLE",
   },
   {
     label: "Remote jobs",
@@ -187,7 +187,7 @@ export function ServiceAccordion({
       className="rh-hero-gallery"
       id="rh-services"
       ref={gallery}
-      aria-label="Explore Remote Hustle services"
+      aria-label="Explore REMOTE HUSTLE services"
       onPointerEnter={(e) => {
         if (e.pointerType !== "touch") setBlocker("hover", true);
       }}
@@ -208,7 +208,7 @@ export function ServiceAccordion({
       }}
     >
       <h1 className="rh-a11y">
-        Providing opportunities for the best hands on deck. Remote Hustle.
+        Providing opportunities for the best hands on deck. REMOTE HUSTLE.
       </h1>
       <div
         className="rh-image-accordion"
@@ -280,7 +280,7 @@ export function ServiceAccordion({
               <h2>{service.heading}</h2>
               <p>{content["service-" + i]?.copy || service.copy}</p>
               <Link className="rh-service-link" href={service.href}>
-                {service.link} <span aria-hidden="true">↗</span>
+                {service.link}
               </Link>
             </div>
             <div className="rh-mobile-card-controls">

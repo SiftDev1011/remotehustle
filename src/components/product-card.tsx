@@ -14,7 +14,7 @@ export function ProductCard({ product }: { product: Product }) {
             loading="lazy"
           />
         ) : (
-          <span aria-hidden="true">rh.</span>
+          <span aria-hidden="true">RH.</span>
         )}
       </div>
       <div className="app-product-copy">
@@ -25,7 +25,6 @@ export function ProductCard({ product }: { product: Product }) {
           {product.description.length > 130 ? "…" : ""}
         </p>
         <strong>{money(product.price_minor)}</strong>
-        <span aria-hidden="true"> ↗</span>
       </div>
     </Link>
   );

@@ -98,7 +98,7 @@ export default async function Refunds({
               <h3>
                 {money(r.amount_minor)}{" "}
                 <Link href={"/admin/orders/" + r.order_id}>
-                  Order {r.order_id.slice(0, 8).toUpperCase()} ↗
+                  Order {r.order_id.slice(0, 8).toUpperCase()}
                 </Link>
               </h3>
               <p className="app-preline">{r.reason}</p>

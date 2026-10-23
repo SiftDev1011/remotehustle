@@ -187,7 +187,7 @@ export function CategoryMotion({
             </span>
           </div>
           <h2>
-            <span className="rh-brand-line rh-brand-one">Remote Hustle</span>
+            <span className="rh-brand-line rh-brand-one">REMOTE HUSTLE</span>
             <span className="rh-brand-line rh-brand-two">
               <mark>got you.</mark>
             </span>
@@ -203,7 +203,6 @@ export function CategoryMotion({
         >
           {choices.map((choice) => (
             <Link className="rh-category" href={choice.href} key={choice.href}>
-              <span aria-hidden="true">↗</span>
               {choice.name}
             </Link>
           ))}
@@ -211,7 +210,7 @@ export function CategoryMotion({
       </div>
       <div className="rh-orbit-cta">
         <Link className="rh-button rh-button-yellow" href="/sign-up">
-          Create your profile ↗
+          Create your profile
         </Link>
       </div>
     </section>

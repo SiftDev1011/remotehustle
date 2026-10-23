@@ -8,7 +8,7 @@ export default function NotFound() {
         The page may have moved or the link may be incorrect.
       </p>
       <Link href="/" className="rm-btn">
-        Back to Remote Hustle ↗
+        Back to REMOTE HUSTLE
       </Link>
     </main>
   );

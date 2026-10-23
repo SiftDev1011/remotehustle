@@ -23,7 +23,7 @@ export function publicMetadata(
     robots: { index: indexingEnabled(), follow: true },
     openGraph: {
       type: "website",
-      siteName: "Remote Hustle",
+      siteName: "REMOTE HUSTLE",
       title,
       description,
       url: new URL(path, origin).href,

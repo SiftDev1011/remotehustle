@@ -118,7 +118,7 @@ export default async function ManagementPage({
       <PageHeading title={config.title} />
       {section === "products" && (
         <Link className="rm-text-link" href="/admin/product-categories">
-          Manage product categories ↗
+          Manage product categories
         </Link>
       )}
       {query.saved && <Notice tone="success">Changes saved.</Notice>}
@@ -377,7 +377,6 @@ export default async function ManagementPage({
                 : section === "products"
                   ? "product"
                   : "record"}{" "}
-            ↗
           </Link>
           {records.length ? (
             <div className="app-record-list app-section">
@@ -400,7 +399,7 @@ export default async function ManagementPage({
                     {(record.active ?? record.published)
                       ? "Published / active"
                       : "Draft / inactive"}{" "}
-                    · Edit ↗
+                    · Edit
                   </span>
                 </Link>
               ))}

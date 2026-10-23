@@ -66,8 +66,8 @@ export function PaymentControls({
             {busy
               ? "Please wait…"
               : status === "failed"
-                ? "Retry payment ↗"
-                : "Continue to Paystack ↗"}
+                ? "Retry payment"
+                : "Continue to Paystack"}
           </button>
           <button
             disabled={busy}

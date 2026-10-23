@@ -33,7 +33,7 @@ export default async function AdminJobs({
         </Link>
       )}
       <Link className="rm-btn" href="/admin/jobs/new">
-        Add opportunity ↗
+        Add opportunity
       </Link>
       {data?.length ? (
         <div className="app-record-list">

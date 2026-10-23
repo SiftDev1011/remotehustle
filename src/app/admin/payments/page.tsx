@@ -42,7 +42,7 @@ export default async function PaymentChecks({
                   className="rm-text-link"
                   href={"/admin/orders/" + p.order_id}
                 >
-                  Order {p.order_id.slice(0, 8).toUpperCase()} ↗
+                  Order {p.order_id.slice(0, 8).toUpperCase()}
                 </Link>
                 <Badge>{p.state}</Badge>
               </div>

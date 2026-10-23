@@ -6,6 +6,12 @@ import { requireArea } from "@/lib/auth";
 import { managedSection, management, minorAmount } from "@/lib/management";
 import { publicError } from "@/lib/errors";
 import type { ActionState } from "@/lib/action-state";
+import {
+  brandingSchema,
+  brandLogoKey,
+  SOCIAL_PLATFORMS,
+  socialUrl,
+} from "@/lib/brand-settings";
 const url = z.string().url().startsWith("https://").nullable();
 const text = (min = 0, max = 8000) => z.string().trim().min(min).max(max);
 export async function saveManagedAction(
@@ -222,7 +228,40 @@ export async function saveContentAction(
   const s = (key: string) => String(form.get(key) || "").trim();
   try {
     let value: Record<string, unknown>;
-    if (key === "home-images")
+    if (key === "branding") {
+      value = brandingSchema.parse({ logo_url: s("logo_url") });
+      if (value.logo_url) {
+        if (
+          !brandLogoKey(
+            String(value.logo_url),
+            process.env.R2_PUBLIC_BASE_URL || "",
+          )
+        )
+          return { error: "Upload a logo using the image control." };
+        const asset = await context.db
+          .from("media_assets")
+          .select("id")
+          .eq("public_url", value.logo_url)
+          .eq("kind", "image")
+          .eq("area", "content")
+          .eq("status", "ready")
+          .maybeSingle();
+        if (asset.error || !asset.data)
+          return { error: "Choose a completed logo upload." };
+      }
+    } else if (key === "socials") {
+      value = {};
+      for (const p of SOCIAL_PLATFORMS) {
+        try {
+          value[p.key] = socialUrl(p.key, s(p.key));
+        } catch {
+          return {
+            error:
+              "Enter a valid HTTPS " + p.label + " link, or leave it blank.",
+          };
+        }
+      }
+    } else if (key === "home-images")
       value = z
         .object({
           learning_image_url: url,

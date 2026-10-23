@@ -15,6 +15,7 @@ export default async function WorkspaceLayout({
         <nav aria-label="Workspace navigation">
           <Link href="/workspace">Overview</Link>
           <Link href="/workspace/profile">My profile</Link>
+          <Link href="/registration">Programme registration</Link>
           <Link href="/workspace/applications">My applications</Link>
           <Link href="/workspace/orders">Orders & downloads</Link>
           <Link href="/jobs">Find work</Link>

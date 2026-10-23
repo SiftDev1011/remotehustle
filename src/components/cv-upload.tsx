@@ -90,7 +90,7 @@ export function CvUpload({
             target="_blank"
             rel="noopener noreferrer"
           >
-            View {currentName || "your CV"} ↗
+            View {currentName || "your CV"}
           </a>
         </p>
       )}

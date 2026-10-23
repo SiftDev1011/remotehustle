@@ -1,3 +1,4 @@
+import { safeNext } from "@/lib/domain";
 export const metadata = { robots: { index: false, follow: false } };
 import Link from "next/link";
 import { PageHeading, Breadcrumbs, ConfigurationNotice } from "@/components/ui";
@@ -6,22 +7,26 @@ import { supabaseConfigured } from "@/lib/env";
 export default async function VerifyEmail({
   searchParams,
 }: {
-  searchParams: Promise<{ email?: string }>;
+  searchParams: Promise<{ email?: string; next?: string }>;
 }) {
-  const { email = "" } = await searchParams;
+  const { email = "", next: rawNext } = await searchParams;
+  const next = safeNext(rawNext);
   return (
     <main id="rh-main" className="rm-page rm-shell app-auth">
       <Breadcrumbs items={[{ label: "Verify email" }]} />
       <PageHeading
         eyebrow="One quick check"
         title="Check your inbox."
-        description="Open the verification email from Remote Hustle to confirm your email address. Check your spam folder if it hasn’t arrived."
+        description="Open the verification email from REMOTE HUSTLE to confirm your email address. Check your spam folder if it hasn’t arrived."
       />
       {!supabaseConfigured() && <ConfigurationNotice />}
-      <VerificationForm email={email.slice(0, 254)} />
+      <VerificationForm email={email.slice(0, 254)} next={next} />
       <p className="rm-note">
         Verified already?{" "}
-        <Link className="rm-text-link" href="/sign-in">
+        <Link
+          className="rm-text-link"
+          href={"/sign-in?next=" + encodeURIComponent(next)}
+        >
           Sign in
         </Link>
       </p>

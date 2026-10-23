@@ -76,9 +76,7 @@ export function JobBrowser({
               <span>{item.employment_type}</span>
             </div>
             <p className="app-job-excerpt">{item.description}</p>
-            <span className="app-job-open">
-              View job <span aria-hidden="true">↗</span>
-            </span>
+            <span className="app-job-open">View job</span>
           </Link>
         ))}
       </div>
@@ -95,10 +93,9 @@ export function JobBrowser({
               {job.application_type === "internal"
                 ? "Apply here"
                 : "Apply on company site"}{" "}
-              <span aria-hidden="true">↗</span>
             </Link>
             <Link className="rm-text-link" href={`/jobs/${job.id}`}>
-              Full job details ↗
+              Full job details
             </Link>
           </div>
         </div>

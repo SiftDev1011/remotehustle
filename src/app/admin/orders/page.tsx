@@ -31,10 +31,10 @@ export default async function Orders({
       <PageHeading title="Orders & downloads." />
       <div className="app-inline-links">
         <Link className="rm-btn rm-btn-light" href="/admin/purchase-issues">
-          Purchase issues ↗
+          Purchase issues
         </Link>
         <Link className="rm-btn rm-btn-light" href="/admin/refunds">
-          Payment corrections ↗
+          Payment corrections
         </Link>
       </div>
       <form className="app-filter-bar">
